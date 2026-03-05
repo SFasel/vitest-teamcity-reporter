@@ -26,10 +26,7 @@ export class Printer {
     if (this.isSkippedOrTodo(testSuite)) {
       return
     }
-    const suiteMessage = new SuiteMessage(
-      escapeSpecials(testSuite.module.moduleId),
-      escapeSpecials(testSuite.name),
-    )
+    const suiteMessage = new SuiteMessage(escapeSpecials(testSuite.module.moduleId), escapeSpecials(testSuite.name))
     this.log(suiteMessage.started())
     this.reportedSuites.add(testSuite.id)
   }
