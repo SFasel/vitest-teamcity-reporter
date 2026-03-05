@@ -87,19 +87,13 @@ export class Printer {
     if (this.isSkippedOrTodo(testSuite)) {
       return
     }
-    const suiteMessage = new SuiteMessage(
-      escapeSpecials(testSuite.module.moduleId),
-      escapeSpecials(testSuite.name),
-    )
+    const suiteMessage = new SuiteMessage(escapeSpecials(testSuite.module.moduleId), escapeSpecials(testSuite.name))
     this.log(suiteMessage.finished())
     this.reportedSuites.delete(testSuite.id)
   }
 
   public onModuleEnd(testModule: TestModule): void {
-    const suiteMessage = new SuiteMessage(
-      escapeSpecials(testModule.moduleId),
-      escapeSpecials(testModule.moduleId),
-    )
+    const suiteMessage = new SuiteMessage(escapeSpecials(testModule.moduleId), escapeSpecials(testModule.moduleId))
     this.log(suiteMessage.finished())
     this.reportedSuites.delete(testModule.moduleId)
   }
